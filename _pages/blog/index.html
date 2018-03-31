@@ -1,0 +1,10 @@
+---
+layout: blog
+id: blog
+title: Blog
+nav: true
+nav-order: 2
+content-pages: true
+---
+
+{% for post in site.posts %} {% include blog/post-grid.html %} {% endfor %}

@@ -1,0 +1,49 @@
+---
+layout: default
+id: home
+nav: true
+nav-order: 1
+title: Home
+
+banner:
+  content: >
+    <p>HAMISH GRAY</p>
+    <p>Digital Designer, Frontend Developer</p>
+    <p>hamishjgray@gmail.com</p>
+    <p>07449 736830</p>
+    -
+    <p>London, United Kingdom</p>
+    <hr>
+    <p class="text--lg">Hi, I'm Hamish!</p>
+    <p class="text--lg">I've learnt that great design is about creating logical systems to solve problems with elegant, timeless solutions. What drives me is being able to collaborate with interesting people to create solutions that satisfy their business and users goals, and make their dreams reality.</p>
+
+---
+{% assign projects = site.html_pages | where:"layout","project" %}
+
+
+<div class="container vpad--xxl">
+  <div class="title title--lg text--center">Projects</div>
+  <div class="row row--4-4-4 row--gutters">
+    {% for project in projects %}
+    <div class="col">
+      <div class="boxpad--sm bg--grey-lightest">
+        <a href="{{project.url}}"><h4 class="title title--md text--bold">{{project.title}}</h4></a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+<div class="container vpad--xxl">
+  <div class="title title--lg text--center">Posts</div>
+  <div class="row row--4-4-4 row--gutters">
+    {% for post in site.posts %}
+    <div class="col">
+      <div class="boxpad--sm bg--grey-lightest">
+        <a href="{{post.url}}"><h4 class="title title--xs text--bold">{{post.title}}</h4></a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
