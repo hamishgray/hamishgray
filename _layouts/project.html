@@ -2,7 +2,30 @@
 layout: default
 ---
 
-<div class="container vpad--xxl text--center">
-  <h1 class="title title--lg">{{page.title}}</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint odit aliquam reprehenderit magni eius, esse quisquam minima inventore, adipisci excepturi. Quibusdam sequi eum labore vitae recusandae aliquam commodi, consectetur itaque.</p>
+<div class="page-bg js-bg-fade" style="background-image: url('{{site.img}}/projects/{{page.id}}/banner.jpg')"></div>
+
+
+
+{% include page/banner-project.html %}
+
+
+
+<div class="project">
+
+  <div class="container container--xxl text--center">
+    {{page.description}}
+  </div>
+
+
+  <div class="container">
+    {% for section in page.sections %}
+      <div class="vpad--xxl">
+        <img src="{{site.img}}/projects/{{page.id}}/{{section.image}}">
+        {% if section.caption %}
+          <div class="project__caption">{{section.caption}}</div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+
 </div>

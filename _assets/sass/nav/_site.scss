@@ -1,10 +1,12 @@
-// styles for the microsite nav
+
+/*========================================
+ *  Styles for the microsite nav
+ *========================================*/
 
 $site-nav-height:    56px;
 $site-nav-height-sm: 44px;
 $nav-width-bp:       640px;
 $nav-color:          $brand;
-
 
 // global site nav height
 @mixin site-nav-height {
@@ -17,59 +19,21 @@ $nav-color:          $brand;
 }
 
 
-.site-header {
+
+.header {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   z-index: $z-nav-upper;
-
-  // Need to come back to this, once I decide the best way. Either always in the layout file for the page
-  // I do like the way this works on capital region, each section has the nav padding, works really well
-  &__offset:before {
-    // corrects header overlapping content
-    content: '';
-    display: block;
-  }
-
 }
 
 
-.site-nav {
+
+.nav {
   position: relative;
   background-color: rgba($nav-color,.8);
   text-align: center;
-
-  // NEEDS EXPLAINING LIKE THE CORE NAV OFFSET
-  &__offset:before {
-    // corrects header overlapping content
-    content: '';
-    display: block;
-    @include site-nav-height;
-  }
-
-
-  &:before {
-    // arrow icon prompt for horizontal scroll
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    z-index: $z-nav-upper;
-    width: $site-nav-height-sm;
-    background-image: url("../img/icons/nav-arrow.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: $site-nav-height-sm auto;
-    @include site-nav-height;
-    @include bp($md){
-      width: $site-nav-height;
-      background-size: $site-nav-height auto;
-    }
-    // remove arrow icon when no overflow
-    @include bp($nav-width-bp){ display: none; }
-  }
 
   &__scroll-wrap {
     overflow-x: auto;
@@ -115,15 +79,5 @@ $nav-color:          $brand;
     white-space: nowrap;
     &.is-current      { background-color: rgba($nav-color,.66); }
     .no-touch &:hover { background-color: rgba($nav-color,1); }
-  }
-
-  // js-sticky-nav style
-  &.is-stuck {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: auto;
-    z-index: $z-nav  ;
   }
 }

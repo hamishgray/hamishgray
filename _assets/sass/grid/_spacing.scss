@@ -1,15 +1,7 @@
-// options for vertical spacing and padding
 
-// default horizontal padding for the whole site
-// Gets set a lot of times so mixin needed to keep track and allow global edit
-@mixin page-padding {
-  padding-left: $s2;
-  padding-right: $s2;
-  @include bp($md){
-    padding-left: $s4;
-    padding-right: $s4;
-  }
-}
+/*========================================
+ *  Grid spacing and padding
+ *========================================*/
 
 // equal vertical padding for large elements
 .vpad {
@@ -84,8 +76,3 @@
   }
 }
 
-// spacing for the main content blocks on the site
-.section-spacing {
-  .bob + .bob { padding-top: $s8; }
-  .container + .container { padding-top: $s11; }
-}

@@ -1,33 +1,23 @@
-// general modifier styles for text
 
-.text {
-  // sizes
-  &--xxl { font-size: $s3; }
-  &--xl  { font-size: $s2; }
-  &--lg  { font-size: $s1; }
+/*========================================
+ *  Text classes and styles
+ *  [general modifier styles for text]
+ *========================================*/
+
+.p {
+  font-weight: 400;
+  &--lg  { font-size: $s2; }
+  &--nm  { font-size: $s1; }
   &--sm  { font-size: $s-1; }
-
+  // families
+  &--mono { font-family: $font-mono; }
   // styles
-  &--italic       { font-style: italic; }
-  &--light        { font-weight: 200; }
-  &--normal       { font-weight: 400; }
-  &--bold         { font-weight: 600; }
-  &--bolder       { font-weight: 700; }
-  &--wide-kern    { letter-spacing: .25em; }
-  &--wide-kern-lg { letter-spacing: .5em; }
-  &--upper        { text-transform: uppercase; }
-
-  // colours
-  &--white { color: $grey-lightest; }
-  &--black { color: $grey-dark; }
-
-  // alignment
-  &--left   { text-align: left; }
-  &--right  { text-align: right; }
-  &--center { text-align: center; }
-  @include bp($lg) {
-    &--bp-left   { text-align: left; }
-    &--bp-right  { text-align: right; }
-    &--bp-center { text-align: center; }
-  }
+  &--italic   { font-style: italic; }
+  &--200      { font-weight: 200; }
+  &--300      { font-weight: 300; }
+  &--400      { font-weight: 400; }
+  &--500      { font-weight: 500; }
+  &--600      { font-weight: 600; }
+  &--kern     { letter-spacing: .15em; }
+  &--upper    { text-transform: uppercase; }
 }

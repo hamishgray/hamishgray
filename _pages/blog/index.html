@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: default
 id: blog
 title: Blog
 nav: true
@@ -7,4 +7,33 @@ nav-order: 2
 content-pages: true
 ---
 
-{% for post in site.posts %} {% include blog/post-grid.html %} {% endfor %}
+
+
+<div class="bg--grey-lightest">
+  <div class="container vpad--xxl">
+    {% for post in site.posts %}
+
+      <div class="post bg--white row row--6-6 row--no-gutters row--valign-center">
+
+        <div class="col">
+          <a class="bg-img bg-img--4-3" href="{{site.baseurl}}{{post.url}}" style="background-image:url({{site.img}}/posts/img.jpg);"></a>
+        </div>
+
+        <div class="col">
+          <div class="boxpad--xl">
+            <h2 class="title title--sm title--bold"><a href="{{site.url}}{{post.url}}">{{post.title}}</a></h2>
+
+            {% if post.date %}
+              <span class="title title--bold text--upper text--wide-kern">{{post.date | date: "%B %d, %Y"}}</span>
+            {% endif %}
+
+            <p>{{post.excerpt | strip_html | truncate: 160}}</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="space--xl"></div>
+
+    {% endfor %}
+  </div>
+</div>

@@ -3,17 +3,22 @@
 
   {% include page/head.html %}
 
-  <body>
+  <body
+    {% if page.colour %} style="background-color:#{{page.colour}};"{% endif %}
+    {% if page.theme %} class="theme--{{page.theme}}"{% endif %}>
 
     {% include components/tracking.html %}
 
     {% include page/header.html %}
 
-    {% include page/banner.html %}
+    {% unless page.layout == 'project' %}
+      {% include page/banner.html %}
+      <div class="page-bg js-bg-fade" style="background-image: url('{{site.img}}/banner/{{page.id}}.jpg')"></div>
+    {% endunless %}
 
-    <div class="content-spacing section-spacing">
-      {{ content }}
-    </div>
+    {{ content }}
+
+    {% include modal/modal.html %}
 
     {% include page/footer.html %}
 

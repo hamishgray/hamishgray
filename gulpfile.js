@@ -68,6 +68,11 @@ gulp.task('watch-js', ['build-js'], function() {
   gulp.watch(['_assets/js/**/*.js'], ['build-js']);
 });
 
+// watch for js
+gulp.task('watch-fonts', ['build-fonts'], function() {
+  gulp.watch(['_assets/fonts/**/*.*'], ['build-fonts']);
+});
+
 // watch for images
 gulp.task('watch-images', ['build-images'], function() {
   gulp.watch(['_assets/img/**/*.*'], ['build-images'])
@@ -115,7 +120,6 @@ gulp.task('build-main-js', function(cb) {
     // components
     './_assets/js/_components/standard.js',
     './_assets/js/_components/modal.js',
-    './_assets/js/_components/modal-nav.js',
 
     // custom js for project
     './_assets/js/main.js',
@@ -143,6 +147,11 @@ gulp.task('build-js', function(cb) {
 gulp.task('build-images', function(cb) {
   return gulp.src('./_assets/img/**/*.*')
   .pipe(gulp.dest('./_site/_assets/img/'))
+});
+
+gulp.task('build-fonts', function(cb) {
+  return gulp.src('./_assets/fonts/**/*.*')
+  .pipe(gulp.dest('./_site/_assets/fonts/'))
 });
 
 
@@ -202,7 +211,8 @@ gulp.task('default', gulpSequence(
     'watch-sass',
     'watch-main-js',
     'watch-js',
-    'watch-images'
+    'watch-images',
+    'watch-fonts'
   ])
 );
 
@@ -214,7 +224,8 @@ gulp.task('build', gulpSequence(
     'build-sass',
     'build-main-js',
     'build-js',
-    'build-images'
+    'build-images',
+    'build-fonts'
   ],
   [
     'clean-sourcemaps',
