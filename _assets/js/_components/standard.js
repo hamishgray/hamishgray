@@ -73,4 +73,39 @@ $(document).scroll(function() { bannerFade(); });
 
 
 
+var bg = $('.page-bg--home');
+var bgImage = $('.page-bg--home .page-bg__image');
+
+bgImage.hide();
+$('.js-project-link').mouseenter(function(){
+  var projectColour = $(this).data('bg-colour');
+  var projectImage = $(this).data('bg-image');
+  if( bg.hasClass('is-ready') ){
+    bgImage.css({
+      'background-color': '#' + projectColour ,
+      'background-image': 'url("' + projectImage + '")'
+    });
+    bg.removeClass('is-ready');
+    bgImage.fadeIn(1000);
+    bg.addClass('is-active');
+  }else{
+    setTimeout(function(){
+      bgImage.css({
+        'background-color': '#' + projectColour ,
+        'background-image': 'url("' + projectImage + '")'
+      });
+      bg.removeClass('is-ready');
+      bgImage.fadeIn(1000);
+      bg.addClass('is-active');
+    },1000);
+  }
+
+}).mouseleave(function(){
+  bg.removeClass('is-active');
+  bgImage.fadeOut(1000);
+  setTimeout(function(){
+    bg.addClass('is-ready');
+  },1000);
+});
+
 

@@ -13,7 +13,7 @@
     padding-top: 4px;
   }
   &--sm {
-    max-width: 30px;
-    @include bp($md){ max-width: 40px; }
+    max-width: 40px;
+    @include bp($md){ max-width: 60px; }
   }
 }

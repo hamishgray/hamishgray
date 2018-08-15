@@ -5,19 +5,19 @@
  *========================================*/
 
 .p {
-  font-weight: 400;
-  &--lg  { font-size: $s2; }
-  &--nm  { font-size: $s1; }
+  font-weight: 300;
+  &--xl  { font-size: $s2; }
+  &--lg  { font-size: $s1; }
+  &--nm  { font-size: $s0; }
   &--sm  { font-size: $s-1; }
-  // families
-  &--mono { font-family: $font-mono; }
-  // styles
-  &--italic   { font-style: italic; }
+  // weights
   &--200      { font-weight: 200; }
   &--300      { font-weight: 300; }
   &--400      { font-weight: 400; }
   &--500      { font-weight: 500; }
   &--600      { font-weight: 600; }
-  &--kern     { letter-spacing: .15em; }
-  &--upper    { text-transform: uppercase; }
+  // styles
+  &--italic { font-style: italic; }
+  &--kern   { letter-spacing: 0.15em; }
+  &--upper   { text-transform: uppercase; }
 }

@@ -3,81 +3,60 @@
  *  Styles for the microsite nav
  *========================================*/
 
-$site-nav-height:    56px;
-$site-nav-height-sm: 44px;
-$nav-width-bp:       640px;
-$nav-color:          $brand;
-
-// global site nav height
-@mixin site-nav-height {
-  height: $site-nav-height-sm;
-  min-height: $site-nav-height-sm;
-  @include bp($md){
-    height: $site-nav-height;
-    min-height: $site-nav-height;
-  }
-}
-
-
+$nav-color: $brand;
+$header-height: 85px;
+$header-offset: 30px;
 
 .header {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  height: $header-height;
+  top: $header-offset;
   left: 0;
   right: 0;
   z-index: $z-nav-upper;
+  &__offset:before {
+    content: "";
+    display: block;
+    height: $header-height+$header-offset*2;
+    min-height: $header-height+$header-offset*2;
+  }
 }
-
 
 
 .nav {
   position: relative;
-  background-color: rgba($nav-color,.8);
   text-align: center;
+  display: flex;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: 0;
 
-  &__scroll-wrap {
-    overflow-x: auto;
-    overflow-y: hidden;
-    @include bp($nav-width-bp){ overflow: visible; }
-  }
-  &__wrap {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    max-width: $xxxl;
-    margin-left: auto;
-    margin-right: auto;
-    @include site-nav-height;
-    &:after {
-      // additional spacing for end of list so content can scroll past the overlaid arrow icon
-      content: '';
-      min-width: $site-nav-height-sm;
-      @include bp($md){ min-width: $site-nav-height; }
-      @include bp($nav-width-bp){ display: none; }
-    }
-  }
   &__item {
     display: flex;
     flex: 1 0 auto;
     border-right: 1px solid rgba($white,.15);
+    .theme--light & {
+      border-right: 1px solid rgba($grey-darkest,.15);
+    }
     &:last-child { border-right: 0; }
   }
   &__link {
+    @include transition;
     display: flex;
     flex-grow: 1;
     align-items: center;
     justify-content: center;
-    padding-left: $s0;
-    padding-right: $s0;
-    font-family: $font;
+    padding: $s0 $s2;
+    font-family: $font-title;
     font-weight: 600;
     font-size: $s-1;
     letter-spacing: .143em;
     text-transform: uppercase;
     color: $white;
-    transition: background-color $transition-time ease;
+    opacity: 0.8;
     white-space: nowrap;
-    &.is-current      { background-color: rgba($nav-color,.66); }
-    .no-touch &:hover { background-color: rgba($nav-color,1); }
+    .theme--light & { color: $grey-darkest; }
+    &.is-current,
+    &:hover { opacity: 1; }
   }
 }

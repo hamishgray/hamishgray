@@ -3,7 +3,7 @@
  *  Default type settings
  *========================================*/
 
-$font:       'Maisonneue', 'Helvetica Neue', sans-serif;
+$font:       'Merriweather', 'Helvetica Neue', sans-serif;
 $font-title: 'Maisonneue', 'Helvetica Neue', sans-serif;
 $font-mono:  'Maisonneue Mono', 'Helvetica Neue', sans-serif;
 
@@ -17,9 +17,9 @@ body {
   font-family: $font;
   -webkit-text-size-adjust: 100%;
   font-weight: 300;
-  line-height: 1.5;
+  line-height: 1.65;
   letter-spacing: .015rem;
-  color: $grey-dark;
+  color: $grey;
   background-color: $white;
 }
 
@@ -30,9 +30,21 @@ body {
 
 .text {
  // colours
- &--white { color: $grey-lightest; }
- &--black { color: $grey-dark; }
- &--default {}
+ &--white {
+   color: $grey-lightest;
+   .t { color: $white; }
+ }
+ &--black,
+ &--default {
+   color: $grey-dark;
+   .t { color: $grey-darkest; }
+ }
+ // families
+ &--mono { font-family: $font-mono; }
+ // modifiers
+ &--kern     { letter-spacing: .15em; }
+ &--italic   { font-style: italic; }
+ &--upper    { text-transform: uppercase; }
  // alignment
  &--left   { text-align: left; }
  &--right  { text-align: right; }

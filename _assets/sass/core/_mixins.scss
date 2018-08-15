@@ -3,7 +3,13 @@
  *  Mixins
  *========================================*/
 
-@mixin transition() { transition: all $transition-time ease; }
+@mixin transition($time: null) {
+  @if($time){
+    transition: all $time ease;
+  }@else{
+    transition: all $transition-time ease;
+  }
+}
 
 @mixin page-padding {
   padding-left: $s2;
@@ -11,15 +17,6 @@
   @include bp($md){
     padding-left: $s4;
     padding-right: $s4;
-  }
-}
-
-@mixin column-padding() {
-  padding-left: $s2/2;
-  padding-right: $s2/2;
-  @include bp($md){
-    padding-left: $s4/2;
-    padding-right: $s4/2;
   }
 }
 

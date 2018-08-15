@@ -3,18 +3,21 @@
 
   {% include page/head.html %}
 
-  <body
-    {% if page.colour %} style="background-color:#{{page.colour}};"{% endif %}
-    {% if page.theme %} class="theme--{{page.theme}}"{% endif %}>
+  <body class="page--{{page.id}} {% if page.theme %}theme--{{page.theme}}{% else %}theme--light{% endif %}">
+
+    <div
+      class="page-bg{% if page.id == 'home' %} page-bg--home is-ready{% endif %}"
+      style="background-color: #{% if page.background.colour %}{{page.background.colour}}{% else %}{{site.colour}}{% endif %};">
+      {% if page.layout == 'project' or page.background.image %}
+      <div
+        class="page-bg__image{% if page.layout == 'project' %} js-bg-fade{% endif %}"
+        style="background-image: url('{{site.img}}{% if page.background.image %}/{{page.background.image}}{% else %}/projects/{{page.id}}/banner.jpg{% endif %}')"></div>
+      {% endif %}
+    </div>
 
     {% include components/tracking.html %}
 
     {% include page/header.html %}
-
-    {% unless page.layout == 'project' %}
-      {% include page/banner.html %}
-      <div class="page-bg js-bg-fade" style="background-image: url('{{site.img}}/banner/{{page.id}}.jpg')"></div>
-    {% endunless %}
 
     {{ content }}
 

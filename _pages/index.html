@@ -4,55 +4,76 @@ id: home
 nav: true
 nav-order: 1
 title: Home
-colour: 273338
 theme: dark
+
+background:
+  colour: 7a00ff
+  image: "banner/home.jpg"
 
 banner:
   content: >
-    <p class="t t--600">HAMISH GRAY</p>
-    <p class="p--sm p--mono">
+    <p class="t t5 t-subtitle">Hamish Gray</p>
+    <p class="p--sm text--mono">
       Digital Designer, Frontend Developer<br />
       hamishjgray@gmail.com<br />
       07449 736830<br />
       London, United Kingdom
     </p>
-    <hr class="hr--left">
-    <p class="p--lg">Hi, I'm Hamish!</p>
-    <p class="p--lg">I've learnt that great design is about creating logical systems to solve problems with elegant, timeless solutions. What drives me is being able to collaborate with interesting people to create solutions that satisfy their business and users goals, and make their dreams reality.</p>
+    <div class="space--xl"></div>
+    <p class="p--xl">Hi, I'm Hamish!</p>
+    <p class="p--xl">I've learnt that great design is about creating logical systems to solve problems with elegant, timeless solutions. What drives me is being able to collaborate with interesting people to create solutions that satisfy their business and users goals, and make their dreams reality.</p>
 
 ---
+{% assign projects = site.html_pages | where:"group-parent","portfolio" | sort:"date" | reverse %}
 
-{% assign projects = site.html_pages | where:"layout","project" | sort:"group-order" %}
-
-
-<div class="container">
+<div class="container vpad--lg">
+  <div class="space--xxl"></div>
   <div class="row">
-    {% for project in projects %}
-    <div class="col--4  vpad--xs">
-      <a href="{{project.url}}" class="project-tile img img--1-1" style="background-image: url({{site.img}}/projects/{{project.id}}/thumb.jpg);">
-        <div class="project-tile__content">
-          <h4 class="t t5 t--600">{{project.title}}</h4>
-          <p class="p--mono p--sm">{{project.details.scope}}</p>
-        </div>
-        <div class="bg-img__bg-overlay"></div>
-      </a>
-    </div>
-    {% endfor %}
-  </div>
-</div>
-
-
-<div class="container vpad--xxl">
-  <div class="t t2 text--center">Posts</div>
-  <div class="row">
-    {% for post in site.posts %}
-    <div class="col--4 vpad--xs">
-      <div class="boxpad--sm bg--grey-darkest">
-        <a href="{{post.url}}"><h4 class="t t5 t--600">{{post.title}}</h4></a>
+    <div class="col">
+      <div class="width--xl">
+      {% if page.banner.content %}
+        {{page.banner.content | liquify}}
+      {% else %}
+        {% if page.banner.title-sup %}<h2 class="sub-title">{{page.banner.title-sup}}</h2>{% endif %}
+        <h1 class="banner-title">{% if page.banner.title %}{{page.banner.title}}{% else %}{{page.title}}{% endif %}</h1>
+        {% if page.banner.title-sub %}<h2 class="sub-title">{{page.banner.title-sub}}</h2>{% endif %}
+      {% endif %}
       </div>
     </div>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<div class="container vpad--lg">
+  <h2 class="t t5 t-subtitle">The Work</h2>
+  <div class="row row--left">
+    {% for project in projects %}
+    <div class="col-12 vpad--xs">
+      <a href="{{project.url}}" class="js-project-link t t1 t--600" data-bg-colour="{{project.colour}}" data-bg-image="{{site.img}}/projects/{{project.id}}/banner.jpg" style="--colour: #{{project.colour}};">{{project.title}}</a>
+    </div>
     {% endfor %}
   </div>
 </div>
 
-<a class="js-open-modal" data-modal-item="test-modal-1" href="javascript:void(0);">modal</a>
+<div class="page-break"></div>
+
+<div class="container vpad--lg">
+  <div class="row">
+    <div class="col-6">
+      <h2 class="t t5 t-subtitle">Existential questions to no one</h2>
+      <p class="p p--lg">Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui.</p>
+      <div class="space--sm"></div>
+      <a href="{{site.baseurl}}/blog" class="btn btn--white">To the blog</a>
+    </div>
+    <div class="col-6">
+      <div class="row row--left text--white">
+        {% assign posts = site.posts | sort: "date ASC" %}
+        {% for post in posts limit:1 %}
+          {% include page/post-summary.html %}
+          <div class="space--lg"></div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
