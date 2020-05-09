@@ -1,0 +1,11 @@
+{
+  "provider": "aws-s3",
+  "providerOptions": {
+    "accessKeyId": "AKIA6E2C675QCLNAIYRW",
+    "secretAccessKey": "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",
+    "region": "eu-west-2",
+    "params": {
+      "Bucket": "hgc-cms"
+    }
+  }
+}
