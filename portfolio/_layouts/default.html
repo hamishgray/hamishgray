@@ -3,7 +3,7 @@
 
   {% include page/head.html %}
 
-  <body class="page--{{page.id}} {% if page.theme %}theme--{{page.theme}}{% else %}theme--light{% endif %}">
+  <body class="page--{{page.id}} {% if page.theme %}theme--{{page.theme}}{% else %}theme--light{% endif %} layout--{{page.layout}}">
 
     <div
       class="page-bg{% if page.id == 'home' %} page-bg--home is-ready{% endif %}"
