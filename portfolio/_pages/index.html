@@ -56,24 +56,3 @@ banner:
   </div>
 </div>
 
-<div class="page-break"></div>
-
-<div class="container vpad--lg">
-  <div class="row">
-    <div class="col-6">
-      <h2 class="t t5 t-subtitle">Existential questions to no one</h2>
-      <p class="p p--lg">Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui.</p>
-      <div class="space--sm"></div>
-      <a href="{{site.baseurl}}/blog" class="btn btn--white">To the blog</a>
-    </div>
-    <div class="col-6">
-      <div class="row row--left text--white">
-        {% assign posts = site.posts | sort: "date ASC" %}
-        {% for post in posts limit:1 %}
-          {% include page/post-summary.html %}
-          <div class="space--lg"></div>
-        {% endfor %}
-      </div>
-    </div>
-  </div>
-</div>
